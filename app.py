@@ -4,10 +4,7 @@ import numpy as np
 import pickle
 from xgboost import XGBClassifier
 
-# --- Save trained model (run this after training in your notebook) ---
-# Uncomment and run this block in your notebook after fitting xgb_best
-# import pickle
-# pickle.dump(xgb_best, open("xgb_best_model.pkl", "wb"))
+import pickle
 
 st.title("Insolvency Prediction App")
 
@@ -16,22 +13,7 @@ model = pickle.load(open("xgb_best_model.pkl", "rb"))
 
 st.header("Enter Company Financial Data")
 
-# Example: Replace with your actual feature names
-feature_names = [
-    # Add all feature names used in your model here
-    " Net worth/Assets", " Debt ratio %", " Gross Profit to Sales", " Operating Gross Margin", " Net Value Per Share (C)",
-    " Net Value Per Share (A)", " Realized Sales Gross Margin", " Net Value Per Share (B)", " Operating profit/Paid-in capital",
-    " Operating Profit Per Share (Yuan ¥)", " Regular Net Profit Growth Rate", " After-tax Net Profit Growth Rate",
-    " ROA(B) before interest and depreciation after tax", " ROA(C) before interest and depreciation before interest",
-    " Liability to Equity", " Current Liabilities/Equity", " Current Liability to Equity", " Net profit before tax/Paid-in capital",
-    " Per Share Net profit before tax (Yuan ¥)", " Net Income to Total Assets", " ROA(A) before interest and % after tax",
-    " Persistent EPS in the Last Four Seasons", " Borrowing dependency", " Operating Funds to Liability", " Cash flow rate",
-    " Current Liability to Assets", " Equity to Long-term Liability", " Net Income to Stockholder's Equity",
-    " Retained Earnings to Total Assets", " Working Capital/Equity", " Contingent liabilities/Net worth", " Total Asset Turnover",
-    " Current Assets/Total Assets", " Quick Assets/Total Assets", " CFO to Assets", " Cash Reinvestment %", " Cash Flow Per Share",
-    " Working Capital to Total Assets", " Cash Flow to Liability", " Cash Flow to Total Assets",
-    " Inventory and accounts receivable/Net value"
-]
+feature_names = [' ROA(C) before interest and depreciation before interest', ' ROA(A) before interest and % after tax', ' ROA(B) before interest and depreciation after tax', ' Operating Gross Margin', ' Realized Sales Gross Margin', ' Operating Profit Rate', ' Pre-tax net Interest Rate', ' After-tax net Interest Rate', ' Non-industry income and expenditure/revenue', ' Continuous interest rate (after tax)', ' Operating Expense Rate', ' Research and development expense rate', ' Cash flow rate', ' Interest-bearing debt interest rate', ' Tax rate (A)', ' Net Value Per Share (B)', ' Net Value Per Share (A)', ' Net Value Per Share (C)', ' Persistent EPS in the Last Four Seasons', ' Cash Flow Per Share', ' Revenue Per Share (Yuan ¥)', ' Operating Profit Per Share (Yuan ¥)', ' Per Share Net profit before tax (Yuan ¥)', ' Realized Sales Gross Profit Growth Rate', ' Operating Profit Growth Rate', ' After-tax Net Profit Growth Rate', ' Regular Net Profit Growth Rate', ' Continuous Net Profit Growth Rate', ' Total Asset Growth Rate', ' Net Value Growth Rate', ' Total Asset Return Growth Rate Ratio', ' Cash Reinvestment %', ' Current Ratio', ' Quick Ratio', ' Interest Expense Ratio', ' Total debt/Total net worth', ' Debt ratio %', ' Net worth/Assets', ' Long-term fund suitability ratio (A)', ' Borrowing dependency', ' Contingent liabilities/Net worth', ' Operating profit/Paid-in capital', ' Net profit before tax/Paid-in capital', ' Inventory and accounts receivable/Net value', ' Total Asset Turnover', ' Accounts Receivable Turnover', ' Average Collection Days', ' Inventory Turnover Rate (times)', ' Fixed Assets Turnover Frequency', ' Net Worth Turnover Rate (times)', ' Revenue per person', ' Operating profit per person', ' Allocation rate per person', ' Working Capital to Total Assets', ' Quick Assets/Total Assets', ' Current Assets/Total Assets', ' Cash/Total Assets', ' Quick Assets/Current Liability', ' Cash/Current Liability', ' Current Liability to Assets', ' Operating Funds to Liability', ' Inventory/Working Capital', ' Inventory/Current Liability', ' Current Liabilities/Liability', ' Working Capital/Equity', ' Current Liabilities/Equity', ' Long-term Liability to Current Assets', ' Retained Earnings to Total Assets', ' Total income/Total expense', ' Total expense/Assets', ' Current Asset Turnover Rate', ' Quick Asset Turnover Rate', ' Working capitcal Turnover Rate', ' Cash Turnover Rate', ' Cash Flow to Sales', ' Fixed Assets to Assets', ' Current Liability to Liability', ' Current Liability to Equity', ' Equity to Long-term Liability', ' Cash Flow to Total Assets', ' Cash Flow to Liability', ' CFO to Assets', ' Cash Flow to Equity', ' Current Liability to Current Assets', ' Liability-Assets Flag', ' Net Income to Total Assets', ' Total assets to GNP price', ' No-credit Interval', ' Gross Profit to Sales', " Net Income to Stockholder's Equity", ' Liability to Equity', ' Degree of Financial Leverage (DFL)', ' Interest Coverage Ratio (Interest expense to EBIT)', ' Net Income Flag', ' Equity to Liability']
 
 user_input = []
 for feature in feature_names:
